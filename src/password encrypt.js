@@ -11,7 +11,11 @@ exports.encryptPassword=(initiatorPassword)=>{
     const cert = new crypto.X509Certificate(certFile);
 
     //extract public key from X509Certificate
-    const publicKey=cert.publicKey
+    const publicKey=cert.publicKey;
+
+    // get public key string 
+    console.log(publicKey.export({ format: 'pem', type: 'spki' }))
+
 
     // encrypt your password
     securityCredential = crypto.publicEncrypt(publicKey,Buffer.from(initiatorPassword)).toString('base64');
