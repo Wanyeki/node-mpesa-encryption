@@ -14,7 +14,7 @@ exports.encryptPassword=(initiatorPassword)=>{
     const publicKey=cert.publicKey
 
     // encrypt your password
-    securityCredential = crypto.publicEncrypt(publicKey,initiatorPassword).toString('base64');
+    securityCredential = crypto.publicEncrypt(publicKey,Buffer.from(initiatorPassword)).toString('base64');
     console.log(securityCredential);
 
     return securityCredential;
